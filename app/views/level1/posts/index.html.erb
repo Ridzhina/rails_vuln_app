@@ -4,7 +4,12 @@
 
 <div id="level1_posts">
   <% @level1_posts.each do |level1_post| %>
-    <%= render level1_post %>
+    <p>
+    <strong>Title: </strong><%= sanitize(level1_post.title) %>
+    </p>
+    <p>
+    <strong>Body: </strong><%= sanitize(level1_post.body) %>
+    </p>
     <p>
       <%= link_to "Show this post", level1_post %>
     </p>
