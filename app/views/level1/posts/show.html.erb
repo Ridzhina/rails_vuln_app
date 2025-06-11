@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @level1_post %>
+<h1><%= @level1_post.title %></h1>
+
+<div id="post-body">
+  <%= raw @level1_post.body %>
+</div>
 
 <div>
   <%= link_to "Edit this post", edit_level1_post_path(@level1_post) %> |
@@ -8,3 +12,13 @@
 
   <%= button_to "Destroy this post", @level1_post, method: :delete %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bodyContent = document.getElementById("post-body").innerHTML;
+
+    if (bodyContent.includes("<script>")) {
+      alert('FLAG{stored_xss_detected}');
+    }
+  });
+</script>
