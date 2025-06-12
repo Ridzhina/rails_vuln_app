@@ -47,6 +47,11 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities.
+  # Pry aims to be more than an IRB replacement.
+  # It is an attempt to bring REPL driven programming to the Ruby language.
+  gem 'pry', '~> 0.15.2'
 end
 
 group :development do
