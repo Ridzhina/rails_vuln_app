@@ -2,6 +2,14 @@
 
 <h1>Posts</h1>
 
+<%= form_with url: level1_posts_path, method: :get, local: true do %>
+  <%= label_tag :q, "Search" %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<p>You are looking for: <span id="search-term"><%= params[:q].html_safe %></span></p>
+
 <div id="level1_posts">
   <% @level1_posts.each do |level1_post| %>
     <p>
@@ -17,3 +25,13 @@
 </div>
 
 <%= link_to "New post", new_level1_post_path %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bodyContent = document.getElementById("search-term").innerHTML;
+
+    if (bodyContent.includes("<script>")) {
+      alert('FLAG{reflected_xss_detected}');
+    }
+  });
+</script>

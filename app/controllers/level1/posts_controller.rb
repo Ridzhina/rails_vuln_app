@@ -3,7 +3,12 @@ class Level1::PostsController < ApplicationController
 
   # GET /level1/posts or /level1/posts.json
   def index
-    @level1_posts = Level1::Post.all
+    if params[:q].present?
+      query = "%#{params[:q]}%"
+      @level1_posts = Level1::Post.where("title LIKE ? OR body LIKE ?", query, query)
+    else
+      @level1_posts = Level1::Post.all
+    end
   end
 
   # GET /level1/posts/1 or /level1/posts/1.json
